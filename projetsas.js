@@ -134,7 +134,7 @@ while(condition){
 
 } else if (infos === 8) {
   
-
+   
 } else if (infos === 0) {
     condition = false;
     console.log("Au revoir !");
