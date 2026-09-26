@@ -93,10 +93,6 @@ const candidats= [
         electeurs: ["E011", "E012", "E013", "E014", "E015"]
     }
 ];
- 
-
-
-
 let condition =true;
 while(condition){
     const infos= parseInt(prompt(`
@@ -110,9 +106,8 @@ while(condition){
         8-statistique de election:
         0-quitter
     `));
-         
     if (infos === 1) {
-    ajouterCandidat();
+        ajouterCandidat();
 
 } else if (infos === 2) {
     ajouterPlusieursC();
@@ -121,7 +116,7 @@ while(condition){
     AffichagelisteCandidats();
 
 } else if (infos === 4) {
-    voter();
+    vote();
 
 } else if (infos === 5) {
     modifierCandidat();
@@ -133,12 +128,10 @@ while(condition){
     rechercheCandidat();
 
 } else if (infos === 8) {
-  
-   
+
 } else if (infos === 0) {
     condition = false;
     console.log("Au revoir !");
-
 } else {
     console.log("Choix invalide !");
 }
@@ -172,7 +165,7 @@ function ajouterCandidat() {
 
     console.log("Candidat bien ajouté", candidat);
 }
-    function ajouterPlusieursC(){
+function ajouterPlusieursC(){
     const nombre =parseInt(prompt('combien tu vous vouler :'));
 for( let i=0;i<nombre;i++){
  const  cin=prompt('entrer CIN   :');
@@ -197,8 +190,7 @@ console.log(candidat);
 function AffichagelisteCandidats() {
     const choix = prompt(`
         1- Trier les candidats
-        2- Filtrer et afficher uniquement les candidats d'un parti spécifique
-    `);
+        2- Filtrer et afficher uniquement les candidats d'un parti spécifique`);
     
 
     if (choix === "1") {
@@ -213,11 +205,8 @@ function AffichagelisteCandidats() {
                 }
             }
         }
-
-        console.table(candidats);
-    }
-
-    else if (choix === "2") {
+          console.table(candidats);
+    }else if (choix === "2") {
 
         const partipl = prompt("Entrer un parti politique");
 
@@ -232,8 +221,7 @@ CIN : ${candidats[i].cin}
 Nom et Prenom : ${candidats[i].nom} ${candidats[i].prenom}
 Age : ${candidats[i].age}
 Parti Politique : ${candidats[i].partiPolitique}
-Nombre de vote : ${candidats[i].electeurs.length}
-                `);
+Nombre de vote : ${candidats[i].electeurs.length}`);
 
                 trouve = true;
             }
@@ -244,4 +232,35 @@ Nombre de vote : ${candidats[i].electeurs.length}
         }
     }
 }
+function modifierCandidat() {
+const choix=prompt(`
+1-modifier le partipolitique ;
+2-modifer age d un candidat  ;`)
+
+   if(choix==="1"){
+       const cincandidat=prompt('entrer le cin de candidat pour changer partipolitique');
+        const nouveaupartipolitique=prompt('enter nououveau parti politique')
+        for(i=0;i<candidats.length;i++){
+            if(candidats[i].cin===cincandidat){
+                candidats[i].partiPolitique=nouveaupartipolitique;
+                 console.log("Parti politique modifie avec succes",candidats[i]);
+                 return;
+            }
+        }
+    }else if (choix==="2"){
+       const cincandidat1=prompt('enter  enter un cin du candidat')
+       const agemodif=parseInt(prompt('entrer un age pour modifer'));
+
+       for(i=0;i<candidats.length;i++){
+           if(candidats[i].age===agemodif){
+              candidats[i].age=agemodif;
+              console.log('age modifer avec succes ',candidats[i]);
+           }
+       
+        }
+    }
+}
+}
+function vote(){
+
 }
