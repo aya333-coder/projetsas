@@ -194,7 +194,54 @@ candidats.push(candidat);
 console.log(candidat);
 }
 }
- }
+function AffichagelisteCandidats() {
+    const choix = prompt(`
+        1- Trier les candidats
+        2- Filtrer et afficher uniquement les candidats d'un parti spécifique
+    `);
+    
 
+    if (choix === "1") {
 
+        for (let i = 0; i < candidats.length - 1; i++) {
+            for (let j = i + 1; j < candidats.length; j++) {
 
+                if (candidats[i].electeurs.length < candidats[j].electeurs.length) {
+                    let swap = candidats[i];
+                    candidats[i] = candidats[j];
+                    candidats[j] = swap;
+                }
+            }
+        }
+
+        console.table(candidats);
+    }
+
+    else if (choix === "2") {
+
+        const partipl = prompt("Entrer un parti politique");
+
+        let trouve = false;
+
+        for (let i = 0; i < candidats.length; i++) {
+
+            if (candidats[i].partiPolitique === partipl) {
+
+                console.log(`
+CIN : ${candidats[i].cin}
+Nom et Prenom : ${candidats[i].nom} ${candidats[i].prenom}
+Age : ${candidats[i].age}
+Parti Politique : ${candidats[i].partiPolitique}
+Nombre de vote : ${candidats[i].electeurs.length}
+                `);
+
+                trouve = true;
+            }
+        }
+
+        if (!trouve) {
+            console.log("Aucun candidat de ce parti");
+        }
+    }
+}
+}
