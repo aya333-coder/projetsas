@@ -122,12 +122,13 @@ while(condition){
     modifierCandidat();
 
 } else if (infos === 6) {
-    
+    supprimerCandidat();
 
 } else if (infos === 7) {
     rechercheCandidat();
 
 } else if (infos === 8) {
+     Statistiquesdélection
 
 } else if (infos === 0) {
     condition = false;
@@ -248,8 +249,8 @@ const choix=prompt(`
              }
         }
     }else if (choix==="2"){
-      const cincandidat1=prompt('enter  enter un cin du candidat')
-       const agemodif=parseInt(prompt('entrer un age pour modifer'));
+      const cincandidat1=prompt('enter  enter un cin du candidat :')
+       const agemodif=parseInt(prompt('entrer un age pour modifer :'));
 
        for(i=0;i<candidats.length;i++){
            if(candidats[i].age===agemodif){
@@ -263,7 +264,7 @@ const choix=prompt(`
 }
 function vote(){
 
-    const proprecin = prompt("Entrer le CIN de l'électeur");
+    const proprecin = prompt("Entrer le CIN de l'électeur :");
 
     // bach n3rf wach le cin déja kin
     for (let i = 0; i < candidats.length; i++) {
@@ -279,7 +280,7 @@ function vote(){
     }
 
     // ila makanch ntlb sin dyal candidat
-    const cinducandidat = prompt("Entrer le CIN du candidat");
+    const cinducandidat = prompt("Entrer le CIN du candidat :");
 
     for (let i = 0; i < candidats.length; i++) {
 
@@ -299,7 +300,7 @@ function vote(){
 }
 function rechercheCandidat(){
 //   count=0;
-    const nomcandidatRechercher=prompt('entrer le nom de candidat ')
+    const nomcandidatRechercher=prompt('entrer le nom de candidat :')
     for( let i=0;i<candidats.length;i++){
         if(candidats[i].nom===nomcandidatRechercher){
      console.log(candidats[i]);
@@ -310,4 +311,23 @@ function rechercheCandidat(){
            
         }
     }
+}
+function supprimerCandidat() {
+
+ const cincandidatsupp=prompt('enter le cin s il vous plait que vous supprimer');
+for(i=0; i<candidats.length;i++){
+
+if(candidats[i].cin===cincandidatsupp){
+for (j=0;j<candidats.length-1;j++){
+    candidats[j]=candidats[j+1];
+
+candidats.length=candidats.length-1;
+  console.log("Candidat supprimé");
+break
+}
+}
+}
+}
+function Statistiquesdélection(){
+    
 }
