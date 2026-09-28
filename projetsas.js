@@ -234,21 +234,21 @@ Nombre de vote : ${candidats[i].electeurs.length}`);
 }
 function modifierCandidat() {
 const choix=prompt(`
-1-modifier le partipolitique ;
-2-modifer age d un candidat  ;`)
+1-modifier le partipolitique :
+2-modifer age d un candidat  :`)
 
    if(choix==="1"){
        const cincandidat=prompt('entrer le cin de candidat pour changer partipolitique');
-        const nouveaupartipolitique=prompt('enter nououveau parti politique')
-        for(i=0;i<candidats.length;i++){
-            if(candidats[i].cin===cincandidat){
+         const nouveaupartipolitique=prompt('enter nououveau parti politique')
+           for(i=0;i<candidats.length;i++){
+             if(candidats[i].cin===cincandidat){
                 candidats[i].partiPolitique=nouveaupartipolitique;
                  console.log("Parti politique modifie avec succes",candidats[i]);
                  return;
-            }
+             }
         }
     }else if (choix==="2"){
-       const cincandidat1=prompt('enter  enter un cin du candidat')
+      const cincandidat1=prompt('enter  enter un cin du candidat')
        const agemodif=parseInt(prompt('entrer un age pour modifer'));
 
        for(i=0;i<candidats.length;i++){
@@ -263,4 +263,51 @@ const choix=prompt(`
 }
 function vote(){
 
+    const proprecin = prompt("Entrer le CIN de l'électeur");
+
+    // bach n3rf wach le cin déja kin
+    for (let i = 0; i < candidats.length; i++) {
+
+        for (let j = 0; j < candidats[i].electeurs.length; j++) {
+
+            if (proprecin === candidats[i].electeurs[j]) {
+
+                console.log("CIN electeur  deja exist");
+                return;
+            }
+        }
+    }
+
+    // ila makanch ntlb sin dyal candidat
+    const cinducandidat = prompt("Entrer le CIN du candidat");
+
+    for (let i = 0; i < candidats.length; i++) {
+
+        if (candidats[i].cin === cinducandidat) {
+
+            candidats[i].electeurs.push(proprecin);
+
+            console.log("Vote enregistre avec succes");
+            return;
+        }
+    }
+
+    console.log("Candidat introuvable");
+
+
+
+}
+function rechercheCandidat(){
+//   count=0;
+    const nomcandidatRechercher=prompt('entrer le nom de candidat ')
+    for( let i=0;i<candidats.length;i++){
+        if(candidats[i].nom===nomcandidatRechercher){
+     console.log(candidats[i]);
+        //   count++;
+        //   if (count===2){
+        //     break;
+        //   }
+           
+        }
+    }
 }
