@@ -101,7 +101,7 @@ while (true) {
         7-recherche les candidtas
         8-statistique de election:
         0-quitter`);
-    let infos = Number(prompt("your choi : "))
+    let infos = Number(prompt("votre choix: "))
     if (infos === 1) {
         ajouterCandidat();
 
@@ -206,7 +206,7 @@ function AffichagelisteCandidats() {
         console.table(candidats);
     } else if (choix === "2") {
 
-        const partipl = prompt("Entrer un parti politique");
+        const partipl = prompt("Entrer un parti politique: ");
 
         let trouve = false;
 
@@ -311,17 +311,14 @@ function rechercheCandidat() {
 }
 function supprimerCandidat() {
 
-    const cincandidatsupp = prompt('enter le cin s il vous plait que vous supprimer');
-    for (i = 0; i < candidats.length; i++) {
+    const cinCandidatSupp = prompt("Enter le CIN du candidat à supprimer : ");
 
-        if (candidats[i].cin === cincandidatsupp) {
-            for (j = 0; j < candidats.length - 1; j++) {
-                candidats[j] = candidats[j + 1];
+    for (let i = 0; i < candidats.length; i++) {
 
-                candidats.length = candidats.length - 1;
-                console.log("Candidat supprimé");
-                break
-            }
+        if (candidats[i].cin === cinCandidatSupp) {
+            candidats.splice(i, 1);
+            console.log("Candidat supprimé");
+            break;
         }
     }
 }
