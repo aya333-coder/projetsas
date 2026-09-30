@@ -22,29 +22,7 @@ function colorer(texte, code) {
     return code + texte + couleurs.reset;
 }
 
-// ============================================================
-// EXEMPLES D'UTILISATION
-// ============================================================
 
-// Exemple A : Couleur simple
-console.log(colorer("Opération réussie !", couleurs.vert));
-console.log(colorer("Fichier introuvable.", couleurs.rouge));
-console.log(colorer("Menu Principal", couleurs.jaune));
-
-// Exemple B : Combiner des styles (Couleur + Gras)
-// Vous pouvez additionner les codes avec le signe "+"
-console.log(colorer("TITRE IMPORTANT", couleurs.cyan + couleurs.gras));
-
-// Exemple C : Mélanger du texte normal et du texte coloré dans une phrase
-const nom = "Alice";
-const score = 95;
-console.log(
-    "Le joueur " +
-    colorer(nom, couleurs.bleu) +
-    " a obtenu " +
-    colorer(score + " points", couleurs.magenta + couleurs.gras) +
-    " !"
-);
 
 const prompt = require('prompt-sync')();
 
@@ -91,7 +69,9 @@ const candidats = [
     }
 ];
 while (true) {
-    console.log(`
+    console.log(colorer(`    =========================================================
+    == Gestion des Élections et Listes Électorales au Maroc =
+    =========================================================
         1-ajouter un nouveau candidaat
         2-ajouter plusieurs candidat
         3-afficher la liste de candidats
@@ -100,7 +80,7 @@ while (true) {
         6-supprimer un candidat
         7-recherche les candidtas
         8-statistique de election:
-        0-quitter`);
+        0-quitter`,couleurs.bleu));
     let infos = Number(prompt("votre choix: "))
     if (infos === 1) {
         ajouterCandidat();
@@ -135,20 +115,20 @@ while (true) {
 }
 function ajouterCandidat() {
 
-    const cinajout = prompt("Entrer CIN : ");
+    const cinajout = prompt(colorer("Entrer CIN : ",couleurs.jaune));
 
     for (let i = 0; i < candidats.length; i++) {
 
         if (candidats[i].cin === cinajout) {
-            console.log("CIN DEJA EXIST");
+            console.log(colorer("CIN DEJA EXIST",couleurs.bleu));
             return;
         }
     }
 
-    const nom = prompt("Entrer le nom : ");
-    const prenom = prompt("Entrer le prenom : ");
-    const age = parseInt(prompt("Entrer votre age : "));
-    const partiPolitique = prompt("Entrer ton partiPolitique : ");
+    const nom = prompt(colorer("Entrer le nom : ",couleurs.jaune));
+    const prenom = prompt(colorer("Entrer le prenom : ",couleurs.jaune));
+    const age = parseInt(prompt(colorer("Entrer votre age : ",couleurs.jaune)));
+    const partiPolitique = prompt(colorer("Entrer ton partiPolitique : ",couleurs.jaune));
 
     const candidat = {
         cin: cinajout,
